@@ -41,7 +41,7 @@ jobs:
             sudo docker rm techgadget-web-prod || true
 
             # Run the new container
-            sudo docker run -d --name techgadget-web-prod -p 5000:8080 techgadget/techgadget-web-prod
+            sudo docker run -d --name techgadget-web-prod -p 80:80 techgadget/techgadget-web-prod
 
             # Clean up dangling images
             sudo docker image prune -af
