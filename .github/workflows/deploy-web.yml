@@ -40,8 +40,10 @@ jobs:
             sudo docker stop techgadget-web-prod || true
             sudo docker rm techgadget-web-prod || true
 
-            # Run the new container
-            sudo docker run -d --name techgadget-web-prod -p 80:80 techgadget/techgadget-web-prod
+            # Copy build folder from the Docker container to EC2
+            sudo docker create --name temp-container techgadget/techgadget-web-prod
+            sudo docker cp temp-container:/app/build ./build
+            sudo docker rm temp-container
 
             # Clean up dangling images
             sudo docker image prune -af
