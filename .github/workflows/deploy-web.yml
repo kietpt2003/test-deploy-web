@@ -34,7 +34,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_IP_PROD_WEB }} << EOF
 
              # Pull the latest image
-            sudo docker pull techgadget-web/techgadget-web-prod
+            sudo docker pull techgadget/techgadget-web-prod
 
             # Stop and remove existing container if it exists
             sudo docker stop techgadget-web-prod || true
