@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image and push
-        run: docker buildx build . --file Dockerfile --tag techgadget/techgadget-web-prod --push
+        run: docker buildx build . --file Dockerfile --tag techgadget/techgadget-web-prod --build-arg REACT_APP_DEV_API=${{ secrets.REACT_APP_DEV_API }} --build-arg REACT_APP_PRO_API=${{ secrets.REACT_APP_PRO_API }} --push
 
       - name: Setup SSH Keys
         uses: webfactory/ssh-agent@v0.9.0
