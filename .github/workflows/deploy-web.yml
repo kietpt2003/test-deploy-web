@@ -36,10 +36,6 @@ jobs:
              # Pull the latest image
             sudo docker pull techgadget/techgadget-web-prod
 
-            # Stop and remove existing container if it exists
-            sudo docker stop techgadget-web-prod || true
-            sudo docker rm techgadget-web-prod || true
-
             # Copy build folder from the Docker container to EC2
             sudo docker create --name temp-container techgadget/techgadget-web-prod
             sudo docker cp temp-container:/app/build ./build
